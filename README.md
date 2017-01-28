@@ -1,33 +1,55 @@
 # iD - friendly JavaScript editor for [OpenStreetMap](http://www.openstreetmap.org/)
 
-[![Build Status](https://secure.travis-ci.org/openstreetmap/iD.png)](https://travis-ci.org/openstreetmap/iD)
+[![Build Status](https://travis-ci.org/openstreetmap/iD.svg?branch=master)](https://travis-ci.org/openstreetmap/iD)
 
 ## Basics
 
 * iD is a JavaScript [OpenStreetMap](http://www.openstreetmap.org/) editor.
 * It's intentionally simple. It lets you do the most basic tasks while
   not breaking other people's data.
-* It supports modern browsers. Data is rendered with [d3](http://d3js.org/).
+* It supports all popular modern desktop browsers: Chrome, Firefox, Safari,
+  Opera, Edge, and IE11.
+* iD is not yet designed for mobile browsers, but this is something we hope to add!
+* Data is rendered with [d3.js](http://d3js.org/).
 
 ## Participate!
 
-* [Try out the latest stable release](http://openstreetmap.us/iD/release)
-* [Read up on Contributing and the code style of iD](CONTRIBUTING.md)
-* See [open issues in the issue tracker](https://github.com/openstreetmap/iD/issues?state=open) if you're looking for something to do
+* Read the project [Code of Conduct](CODE_OF_CONDUCT.md) and remember to be nice to one another.
+* Read up on [Contributing and the code style of iD](CONTRIBUTING.md).
+* See [open issues in the issue tracker](https://github.com/openstreetmap/iD/issues?state=open) if you're looking for something to do.
 * [Translate!](https://github.com/openstreetmap/iD/blob/master/CONTRIBUTING.md#translating)
+* Test a prerelease version of iD:
+  * Stable mirror of `release` branch:  http://openstreetmap.us/iD/release
+  * Development mirror of `master` branch:  http://openstreetmap.us/iD/master
 
-[![translation chart](https://www.transifex.com/projects/p/id-editor/chart/image_png)](https://github.com/openstreetmap/iD/blob/master/CONTRIBUTING.md#translating)
+Come on in, the water's lovely. More help? Ping `jfire` or `bhousel` on:
+* [OpenStreetMap US Slack](https://osmus-slack.herokuapp.com/)
+(`#dev` or `#general` channels)
+* [OpenStreetMap IRC](http://wiki.openstreetmap.org/wiki/IRC)
+(`irc.oftc.net`, in `#iD` or `#osm-dev` or `#osm`)
+* [OpenStreetMap `dev` mailing list](http://wiki.openstreetmap.org/wiki/Mailing_lists)
+
+## Prerequisites
+
+* [Node.js](http://nodejs.org/) version 4 or newer
+* [`git`](https://www.atlassian.com/git/tutorials/install-git/) for your platform
+  * Note for Windows users:
+    * Edit `$HOME\.gitconfig`:<br/>
+      Add these lines to avoid checking in files with CRLF newlines<br><pre>
+      [core]
+          autocrlf = input</pre>
+
 ## Installation
 
-To run the current development version, fork this project, run `make`, and serve it locally.
-If you have Python handy, just `cd` into the project root directory and run
+Note: Windows users should run these steps in a shell started with "Run as administrator".
+This is only necessary the first time so that the build process can create symbolic links.
 
-     python -m SimpleHTTPServer
+To run the current development version of iD on your own computer:
 
-Or, with a Mac, you can enable Web Sharing and clone iD into your website directory.
-
-Come on in, the water's lovely. More help? Ping tmcw, jfire, or bhousel on IRC
-(`irc.oftc.net`, in `#osm-dev` or `#osm`) or on the OSM mailing lists.
+1. Create a local `git clone` of the project, then `cd` into the project folder
+2. Run `npm install`  (this will run the `prepublish` script that builds everything)
+3. Run `npm start`
+4. Open `http://localhost:8080/` in a web browser
 
 For guidance on building a packaged version, running tests, and contributing to
 development, see [CONTRIBUTING.md](CONTRIBUTING.md).
@@ -35,7 +57,7 @@ development, see [CONTRIBUTING.md](CONTRIBUTING.md).
 ## License
 
 iD is available under the [ISC License](https://opensource.org/licenses/ISC).
-It includes [d3js](http://d3js.org/), which BSD-licensed.
+It includes [d3.js](http://d3js.org/), which BSD-licensed.
 
 ## Thank you
 

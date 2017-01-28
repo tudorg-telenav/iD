@@ -1,4 +1,7 @@
+/* globals chai:false */
+
 iD.debug = true;
+iD.data.imagery = [];
 
 mocha.setup({
     ui: 'bdd',
@@ -13,7 +16,8 @@ mocha.setup({
     ]
 });
 
-var expect = chai.expect;
+expect = chai.expect;
+var d3 = iD.d3;
 
 chai.use(function (chai, utils) {
     var flag = utils.flag;

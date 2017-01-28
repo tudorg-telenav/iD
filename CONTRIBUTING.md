@@ -3,6 +3,11 @@
 Thinking of contributing to iD? High five! Here are some basics for our habits
 so that you can write code that fits in perfectly.
 
+## Code of Conduct
+
+We want everyone to feel comfortable contributing to iD.  Please read the project
+[Code of Conduct](CODE_OF_CONDUCT.md) and remember to be nice to one another.
+
 ## Reporting Issues
 
 We'd love to hear what you think about iD, about any specific problems or
@@ -12,11 +17,15 @@ Please [search for your issue before filing it: many bugs and improvements have 
 
 To report a bug:
 
-* Write specifically what browser (type and version, like "Firefox 43.0"), OS, and browser extensions you have installed
-* Write steps to replicate the error: when did it happen? What did you expect to happen? What happened instead?
+* Write specifically what browser (type and version, like "Firefox 49.0"), OS,
+and browser extensions you have installed
+* Write steps to replicate the error: when did it happen? What did you expect to happen?
+What happened instead?
+* We love screenshots.  If you can take a picture of the issue, that is extra helpful.
+You can drag the image file onto the GitHub issue and it will be included with your bug report.
 * Please keep bug reports professional and straightforward: trust us, we share your dismay at software breaking.
 * If you can, [enable web developer extensions](http://debugbrowser.com/) and report the
-  Javascript error message.
+JavaScript error message.
 
 When in doubt, be over-descriptive of the bug and how you discovered it.
 
@@ -90,8 +99,9 @@ to iD, only display them in the interface through the `t()` function.
 Then, add the new string to `data/core.yaml`. The translation system, Transifex,
 will automatically detect the change.
 
-Use `make` to build the translations with the local changes.
-`make translate` can be used to pull the latest translations from Transifex.
+Use `npm run build` to build the translations with the local changes.
+
+`npm run translations` can be used to pull the latest translations from Transifex.
 
 ## Contributing Documentation
 
@@ -100,7 +110,9 @@ documents in [core.yaml](/data/core.yaml). The documentation
 is in the `help` section (currently starting at line 258). The first line
 of each new section of documentation should be of the form
 
-    # GPS
+```markdown
+# GPS
+```
 
 This will be used for navigation and as its title in iD. Documentation is
 shown in alphabetical order, so most documentation is prefixed with `02-` and
@@ -114,22 +126,23 @@ Presets save time for iD users by automatically showing them the tags they are
 likely to add for a given feature. They are stored in `data/presets/presets`. If
 you're going to update the presets, [review the Presets README](/data/presets/README.md).
 
-## Javascript
+## JavaScript
 
-We use the [Airbnb style for Javascript](https://github.com/airbnb/javascript) with
+We use the [Airbnb style for JavaScript](https://github.com/airbnb/javascript) with
 only one difference:
 
-**4 space soft tabs always for Javascript, not 2.**
+**4 space soft tabs always for JavaScript, not 2.**
 
 No aligned `=`, no aligned arguments, spaces are either indents or the 1
 space between expressions. No hard tabs, ever.
 
-Javascript code should pass through [ESLint](http://eslint.org/) with no
-warnings.
+JavaScript code should pass through [ESLint](http://eslint.org/) with no
+warnings. iD uses [ES6 modules](http://exploringjs.com/es6/ch_modules.html) to
+handle connect code together, so we support `import` and `export` constructs.
 
 ## HTML
 
-There isn't much HTML in iD, but what there is is similar to JS: 4 spaces
+There isn't much HTML in iD, but what there is is similar to JavaScript: 4 spaces
 always, indented by the level of the tree:
 
 ```html
@@ -140,7 +153,7 @@ always, indented by the level of the tree:
 
 ## CSS
 
-Just like HTML and Javascript, 4 space soft tabs always.
+Just like HTML and JavaScript, 4 space soft tabs always.
 
 ```css
 .radial-menu-tooltip {
@@ -149,22 +162,19 @@ Just like HTML and Javascript, 4 space soft tabs always.
 ```
 
 We write vanilla CSS with no preprocessing step. Since iD targets modern browsers,
-feel free to use newer features wisely.
+(Chrome, Firefox, Safair, Opera, IE11, and Edge) feel free to use newer features wisely.
 
 ## Tests
 
-Test your code and make sure it passes. Our testing harness requires [node.js](http://nodejs.org/)
-and a few modules:
+Test your code and make sure it passes.
 
-1. [Install node.js](http://nodejs.org/) version 0.10.0 or later - 'Install' will download a package for your OS
-2. Go to the directory where you have checked out `iD`
-3. Run `npm install`
-4. Run `npm test` to see whether your tests pass or fail.
+1. Go to the directory where you have checked out `iD`
+2. run `npm install`
+3. run `npm test` to see whether your tests pass or fail.
 
 ## Building / Installing
 
-You can build a concatenated and minified version of iD with the command `make`. Node.js is
-required for this.
+You can rebuild iD completely with the command `npm run all`.
 
 iD will be built to the `dist` directory. This directory is self-contained; you can copy it
 into the public directory of your webserver to deploy iD.
@@ -184,13 +194,12 @@ In your local copy, make a branch for this change:
 
     git checkout -b make-red
 
-Make your changes to source files. By source files we mean the files in `js/`.
-the `iD.js` and `iD.min.js` files in this project are autogenerated - don't edit
-them.
+Make your changes to source files under `modules/`.
+The `iD.js` and `iD.min.js` files in this project are autogenerated - don't edit them.
 
-So let's say you've changed `js/ui/confirm.js`.
+So let's say you've changed `modules/ui/confirm.js`.
 
-1. Run `eslint js/id` to make sure your code is clean
-2. Run tests with `npm test`
+1. Try it out locally.  Run `npm start` and visit `localhost:8080` in a browser.
+2. Run lint and tests with `npm test`
 3. Commit your changes with an informative commit message
 4. [Submit a pull request](https://help.github.com/articles/using-pull-requests) to the `openstreetmap/iD` project.

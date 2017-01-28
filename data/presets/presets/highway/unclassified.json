@@ -5,7 +5,9 @@
         "maxspeed",
         "structure",
         "access",
+        "lanes",
         "surface",
+        "maxheight",
         "cycleway"
     ],
     "geometry": [
@@ -15,5 +17,5 @@
         "highway": "unclassified"
     },
     "terms": [],
-    "name": "Unclassified Road"
+    "name": "Minor/Unclassified Road"
 }

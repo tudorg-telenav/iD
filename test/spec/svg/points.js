@@ -1,18 +1,24 @@
-describe("iD.svg.Points", function () {
-    var surface,
-        projection = Object,
-        context;
+describe('iD.svgPoints', function () {
+    var context, surface,
+        projection = d3.geoProjection(function(x, y) { return [x, -y]; })
+            .translate([0, 0])
+            .scale(180 / Math.PI)
+            .clipExtent([[0, 0], [Infinity, Infinity]]);
 
     beforeEach(function () {
-        context = iD().presets(iD.data.presets);
-        surface = d3.select(document.createElementNS('http://www.w3.org/2000/svg', 'svg'))
-            .call(iD.svg.Surface(context));
+        context = iD.Context();
+        d3.select(document.createElement('div'))
+            .attr('id', 'map')
+            .call(context.map());
+        surface = context.surface();
     });
 
-    it("adds tag classes", function () {
-        var point = iD.Node({tags: {amenity: "cafe"}, loc: [0, 0]});
 
-        surface.call(iD.svg.Points(projection, context), [point]);
+    it('adds tag classes', function () {
+        var point = iD.Node({tags: {amenity: 'cafe'}, loc: [0, 0]}),
+            graph = iD.Graph([point]);
+
+        surface.call(iD.svgPoints(projection, context), graph, [point]);
 
         expect(surface.select('.point')).to.be.classed('tag-amenity');
         expect(surface.select('.point')).to.be.classed('tag-amenity-cafe');

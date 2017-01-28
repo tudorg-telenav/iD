@@ -1,15 +1,19 @@
 {
     "fields": [
-        "surface"
+        "surface",
+        "parallel_direction"
     ],
     "geometry": [
-        "vertex"
+        "vertex",
+        "line"
+    ],
+    "terms": [
+        "hump",
+        "speed",
+        "slow"
     ],
     "tags": {
         "traffic_calming": "bump"
     },
-    "terms": [
-        "speed hump"
-    ],
     "name": "Speed Bump"
 }

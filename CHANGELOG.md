@@ -1,8 +1,284 @@
+:warning: = Breaking change, may affect downstream projects or sites that embed iD.
+
+## 2.0.2
+##### Dec 22, 2016
+* Bugfixes:
+  * Update imageryBlacklists function to use blacklists from OSM API (#3623)
+  * Better checks for invalid ids in Select mode (#3640)
+  * Unable to toggle oneway=yes on highways (#3638)
+  * Hide labels along selected ways or near selected vertices (#3636)
+  * Windows/Chrome bug: missing mouseup was getting users stuck and unable to select features (#2151)
+  * Fix map moving with middle mouse click (#3612)
+* New Features:
+  * Pull LTR/RTL list from Transifex instead of hardcoding it (#3489)
+  * Refocus map and selectedIDs on undo/redo (#2204)
+  * Display labels for vertices (#2709)
+* Presets:
+  * Add Waterfall Preset (#3608)
+  * Adjust matchscores so that barrier doesn't take priority over other features (#3647)
+  * Add Public Bath Preset (#3642, thanks @Natsuyasumi)
+  * Remove "Covered" field from Bus Stop preset (#3627)
+  * Add surveillance and camera related presets (#3599, thanks @bkil)
+  * Add amenity=food_court and amenity=crematorium (#3621, thanks @samely)
+  * Add maxheight field and add it to many highway presets (#3605)
+  * Add fence and wall type fields, add height field to some barriers (#3602)
+  * Add presets for Aquarium, Resort, Dance Hall (#3579)
+  * Add Internet Access fields to many presets (#3568, thanks @bkil)
+  * Add highway=traffic_mirror preset (#3568, thanks @bkil)
+  * Improvements to Mast/Tower presets (#3561, thanks @bkil)
+
+## 2.0.1
+##### Nov 17, 2016
+* Bugfixes:
+  * When starting iD with an object selected, the map should focus on that object (#3588, thanks @tyrasd)
+  * Fix for "Best" imagery not being automatically selected (#3586)
+* Performance improvements:
+  * Adjust max Mapillary pages fetched per zoom, adjust min viewfield zoom
+
+## 2.0.0
+##### Nov 15, 2016
+* :warning: iD is now written in a modular code style using ES6 `import`/`export` and [rollup.js](http://rollupjs.org/) as a build tool (#3118, #3179, #3180)
+  * Many thanks to @tmcw, @kepta, @tyrasd, @beaugunderson, @davidchouse
+* :warning: Flattened namespace means that all functions have changed names (#3479)
+  * e.g. `iD.actions.Move` -> `iD.actionMove`, `iD.geo.Extent` -> `iD.geoExtent`
+  * Many deprecated names are still exported as symbols, e.g. `iD.Context` - we will remove these eventually
+* :warning: Customized iD deployments can manipulate live objects, rather than iD.Context accessors
+  * No longer need to call things like `presets()`, `imagery()`, `taginfo()` when creating `iD.Context`
+  * See [API.md](https://github.com/openstreetmap/iD/blob/master/API.md#customized-deployments) for details on customized deployments
+* :warning: iD has upgraded to the latest released versions of d3, lodash, rbush, etc.
+  * d3 no longer adds itself to the global namespace, but can now be accessed via `iD.d3`
+* :warning: iD now uses `npm` scripts for all build processes
+  * iD requires Node v4 or higher, but does not require `make` anymore
+  * Update install instructions and prerequisites (#3466, thanks @tyrasd)
+* :warning: iD url hash map order has changed to `zoom/latitude/longitude` to match OSM and others (#3554)
+* :warning: Authentication methods like `context.preauth`, `connection.switch`, `iD.uiSourceSwitch.keys` options have changed
+  * `url` option has been renamed to `urlroot`
+* Many preset improvements:
+  * Add Construction and Tower Type fields to Mast and Tower presets (#3561, thanks @bkil)
+  * Add Turning Loop (Island) preset, adjust icons for traversable/nontraversable features (#3557)
+  * Add Internet Cafe preset (#3559)
+  * Improve styling of Farmyards (#3556, thanks @Thue)
+  * Add Guest Apartment / Condo preset (#3548)
+  * Add Waste Transfer preset (#3387)
+  * Add Billboard preset (#3386)
+  * Improve traffic calming presets (#3218)
+  * Improve waste and recycling presets (#2689)
+  * Rename Camp Site to Campground, and add preset for individual camp pitches (#3385)
+  * Multiselect field for Bike Shop services (#3517, thanks @willemarcel)
+  * Add presets for Nail Salon, Tanning Salon (#3516, thanks @skorasaurus)
+  * Split golf water_hazard presets into separate line and area presets (#3483)
+  * Update terms lists for Anime preset (#3478, thanks @mbrickn)
+  * Add Pastry Shop preset (#3444, thanks @Dgleish)
+  * Add maxspeed field to Railway preset (#3458, thanks @boothym)
+  * Add E-Cigarette Shop preset (#3457, thanks @boothym)
+  * Add capacity field to Charging Station preset (#3458, thanks @boothym)
+  * Add Pumping Station preset (#3384, thanks @kepta)
+  * Improve Railway crossing presets (#3395, thanks @boothym)
+  * Improve Gym and Sports Center presets (#3352, thanks @boothym)
+  * Add Coworking Space preset (#3381, thanks @willemarcel)
+  * Add access_simple field for Basketball, Tennis, Garden presets (#3336, thanks @Psigio)
+  * Add icon to fire hydrant preset (#3380, thanks @bagage)
+  * Add Yoga Studio preset (#3352, thanks @Psigio)
+  * Add Bowling Green preset (#3363, thanks @boothym)
+  * Add more fields ("support", "display", "visibility", "date") to Clock preset (#3318, thanks @HolgerJeromin)
+  * Add more values to the speed limit field (#3316, thanks @1ec5)
+  * Add network combo field for route relations (#3302, thanks @1ec5)
+  * Add Blood Donor Center preset (#3285, thanks @M1dgard)
+  * Add indoor yes/no field for Defibrillator preset (#3284, thanks @M1dgard)
+  * Add Miniature Golf preset (#3279, thanks @boothym)
+  * Add second_hand field for shop=car preset (#3274, thanks @skorasaurus)
+  * Add Planetarium preset (#3268, thanks @willemarcel)
+  * Add Ice Cream Shop preset (#3253, thanks @ankit-m)
+  * Add Taiwan address format to Address field (#3261, thanks @david082321)
+* New Features:
+  * `ui()` initializer now accepts a callback that will be called when loadLocale is finished (#3550)
+  * Vertex keyboard navigation (#1917, #3539)
+    * `[` or `pageup` - jump to previous vertex
+    * `]` or `pagedown` - jump to next vertex
+    * `⌘[` or `home` - jump to first vertex
+    * `⌘]` or `end` - jump to last vertex
+    * `\` or `pause-break` - select next parent, if at intersection
+  * Address field improvements - eliminate duplicates, more dropdowns for address fields (#3553)
+  * OSM API calls are now authenticated for logged in users (helps with (#3519, #2262)
+  * When reversing a way, reverse tags on its child nodes (#3076, thanks @Psigio)
+  * Support Right to Left interface for some languages 'ar', 'fa', 'iw', 'dv' (#3007, #3087, thanks @mapmeld)
+  * Allow user to click an 'X' to remove an item from the selection list (#2950, thanks @ebrelsford)
+  * Bundled Mapillary JS plugin upgraded to v2.0 (#3496)
+  * Allow `Del` key as a without modifier as a Delete shortcut (#3455)
+  * Remove diacritics (accented chars) when doing fuzzy searches (#3159)
+* Bugfixes:
+  * Prevent imagery offset nudging buttons from getting stuck if user clicks again (#3576)
+  * Don't include terms for non-searchable presets in translation source (#3323)
+  * Let user know if the documentation points to a redirect page (#3337)
+  * Fix line labeling placement for IE11, Edge (#3020)
+  * Better label placement, use smaller collision boxes (#1645)
+  * Allow "network", "genus", "taxon", "species" taginfo lookups to expect uppercase values (#3377)
+  * Fix way disappearing due to invalid "layer" tag (#3405, thanks @edpop)
+  * Add radix parameter for all `parseInt` calls (#3399, thanks @HolgerJeromin)
+  * Don't limit movement of vertex that combines two endpoints (#2731)
+  * Don't use checks in walkthrough navigation (#3247)
+  * Default Wikipedia language field to user's language, not English (#3265)
+* Performance improvements:
+  * Clip area polygons and clippaths to padded viewport (#3529)
+  * Throttled redrawing (#3360, thanks @guillaume)
+  * Use fewer steps for interpolated breathe behavior (#2911)
+
+## 1.9.7
+##### Jul 16, 2016
+* Treat features on `addr:interpolation` lines as points, not vertices (#3241)
+* Add ref field to `amenity=post_box` preset (#3232, thanks @boothym)
+* Fix crash calling `_.all` when moving multiple features (#3155, thanks @tyrasd)
+* Add `emergency=defibrillator` preset (#3202, thanks @ramyaragupathy)
+* Add `man_made=bridge` preset (#3183, thanks @SatyaSudheer)
+* Switch from `sloped_curb=*` to `kerb=*` (#3210)
+* Rename "Chemist" preset label to "Drugstore" for en_US (#3201)
+* Exclude imagery sources more than 20 years old (#3190)
+* Add `highway=give_way` preset for yield signs
+* Add stars, rooms, internet access fee fields for hotel presets (#3144, thanks @homersimpsons)
+* Add stop type, direction forward/backward fields for stop sign preset (#3115, thanks @homersimpsons)
+* When setting form's background color also set field color (#3100 thanks @jonnybarnes)
+* Add sidewalk preset to Path presets category (#3181, thanks @willemarcel)
+* Fix mph/kph imperial units test in maxspeed (#3156)
+* Fix d3 bug causing map to translate far away when zooming under heavy load (#2773, thanks @kepta)
+
+## 1.9.6
+##### Jun 7, 2016
+* Embed interactive Mapillary JS viewer instead of static image (#3128, thanks @kepta, @peterneubauer)
+* Add "grill" as search term for `amenity=bbq` preset (#3139, thanks @manfredbrandl)
+* When setting Wikipedia value, also set corresponding Wikidata tag (#2732, thanks @1ec5)
+
+## 1.9.5
+##### May 25, 2016
+* Clean translated combo value when comparing to display value (#3129)
+* Change color of Save button as user edits increase (#2749, thanks @tanerochris)
+* Migrate to lodash v4 (#3107, thanks @kepta)
+* Don't try to snap new ways to offscreen areas (#3114)
+* Prevent keypress handlers from being called extra times (#3111)
+* Add spacebar click for efficient way drawing (#2784, thanks @brandonreavis)
+* Rename `barrier=ditch` preset to "Trench", leave `waterway=ditch` preset as "Ditch"
+* Use prison icon for gate-like barriers, roadblock icon for other barriers
+* Add Barrier category: wall, fence, ditch (#2344, thanks @Wikiwide)
+* Add slight fill to the area icon (#3109)
+* Localize phone placeholder for country being edited (#3084, thanks @dobratzp)
+* Clicking on scale bar will toggle units from imperial/metric (#2351)
+* Use ⌘B for quick background switching, add tooltip, style (#2854, thanks @RoPP)
+* Fix greediness of autocompletion (#3077, #3106, thanks @kepta)
+* Add preset for `route=horse` relations (#3057, thanks @kepta)
+* Keep "move" cursor while adjusting imagery offset (#3101)
+* Move generic Building preset to top of Building category list (#3102)
+* Update Wikipedia list (#3098, thanks @1ec5)
+
+## 1.9.4
+##### May 3, 2016
+* Fix bug causing save button to remain disabled even when changeset comment is entered (#3096)
+* Support setting imagery offset via url hash parameter (#3093)
+* Don't allow user to straighten a line if start/end nodes are at the same location (#2792)
+* Add `fee` and `bin` fields to some presets (#2872)
+* Add multiCombo field type selecting multiple items from a list (#3034, #3080, thanks @kepta)
+  * Support `payment:` tagging, add to vending machine presets (#2872)
+  * Support `currency:` tagging, add to vending machine, money exchange, ATM presets (#2872)
+  * Support `fuel:` tagging, add to fuel station presets (#1987)
+  * Support `recycling:` tagging, add to recycling presets (#2873)
+* Improve tabbing and keyboard navigation in the entity editor
+* Exclude `name` tag when validating whether a feature has tags (#3091)
+* Add taginfo typeahead behavior to combo fields (#3089)
+* Lower popularity thresholds for taginfo lookups
+* Support looking up languages by English or local names (#3023, thanks @mapmeld)
+
+## 1.9.3
+##### Apr 25, 2016
+* Display "Choose language" placeholder value for Wikipedia language field (#3071)
+* Add prison preset (#3070, thanks @kepta)
+* Improve `studio=*` tagging (#3061, thanks @kepta)
+* Dedupe relations with same calculated name so they will appear in relation picker (#2891)
+* Modal Dialog and Save/Restore improvements (#3036)
+* Use case sensitive combo for changeset autocompletion (#3039)
+* Add a warning to the changeset page if a user mentions Google (#3063, thanks @tmcw)
+* Fix bug when manually assigning a role to a relation member (#2739)
+* Imagery offset control now allows dragging or typing to adjust offsets (#1340, thanks @kepta)
+* Support terrain imagery backgrounds: Stamen Terrain, Thunderforest Landscape
+* Don't fetch overlay tiles or Mapillary data around Null Island (#2751)
+* Show values as hover tooltips when field is too narrow to display full value (#3054)
+* Don't clean fields (trim whitespace) on every input event (#3045)
+* Improve usability of Save and Cancel buttons (#3040)
+* Close seams in imagery tiles (#3053)
+* Improve instructions for building on Windows (#2574)
+* Add Code of Conduct (#3051)
+* Add nutrition supplements store preset (#3043)
+* Add coffee shop preset (#3042)
+
+## 1.9.2
+##### Mar 18, 2016
+* Avoid jumpiness when dragging node markers (#3003)
+* Rename "Dock" -> "Wet Dock / Dry Dock" (#3030)
+* Refresh lables when switching to a new GPX file (#3032)
+* Fix bug where adding a space to a name would undo a previous edit (#3035)
+* Display GPX tracks immediately when loaded or toggled (#3027)
+* Include "Local GPX" in imagery used list when GPX loaded via url parameter (#2804)
+* Add Bird Hide preset (#3026)
+* Exclude from areaKeys blacklist presets that are point/vertex only (#3009)
+* Return to browse mode and block ui while geolocating (#3016)
+* Restore highway=unclassified to thick line rendering and rename as "Minor/Unclassified Road" (#3015)
+* Allow drawing of freeform shapes when using the shift-click-drag lasso selection tool (#2937, thanks @kepta)
+* Rename "Major Roads" -> "Traffic Roads", "Minor Roads" -> "Service Roads" in feature filter list
+
+## 1.9.1
+##### Mar 3, 2016
+* Add context.asset for building asset filenames, use for Mapillary Traffico files (#3011)
+* Fix crash in starting tutorial, bad selector for .layer-background opacity (#3010)
+
+## 1.9.0
+##### Mar 1, 2016
+* Fix rendering of modified/moved multipolygons (#3008)
+* Preserve connectivity when pasting (#2584, thanks @jfirebaugh)
+* Fix rendering of bumpy surfaces in turn restriction editor (#3004)
+* Draw radial menu on top of data layers (#2994)
+* Move data layers out of `iD.Background` (#3001)
+* Disambiguate art store, art gallery, etc. (#2999, thanks @harry-wood)
+* Post office should have opening_hours instead collection_times (#2996, thanks @HolgerJeromin)
+* Improved abandoned/disused railway icons (#2967, thanks @kepta)
+* Use access=yes instead of access=public for toilets (#2576, thanks @gileri)
+* Rename "Track" -> "Unmaintained Track Road" and add terms (#2982, thanks @brianreavis)
+* Mapillary improvements
+  * Add support for street signs layer (#2720)
+  * Show Mapillary thumbnail on opposite side of map from marker (#2775)
+  * Fetch all available Mapillary data, but cull based on density (#2794)
+  * Display Mapillary data out to zoom level 12 (#2468, #2675)
+  * Add ability to remove/disable Mapillary layers (#2722)
+* Add expansion arrows to category presets for better usability (#2972, thanks @kepta)
+* Refactor services into iD.services namespace
+  * :warning: This means that `iD.taginfo` is now `iD.serviceTaginfo`
+* Disallow disconnecting that would damage relations (#1714, thanks @jfirebaugh)
+* Allow escape to cancel ⌘-V paste (#2889)
+* Enter should accept input and return to browse mode only on preset input fields (#2912, #2957, #2380)
+* No need to make FAQ link translatable (#2973)
+* Display star for "best" imagery, add link to imagery info (#2902, thanks @kepta)
+* Use HTTPS for Nominatim and other services if available (#2960, thanks @kepta)
+* Add `shop=storage_rental` preset (#2943, thanks @kepta)
+* Add site relation preset (#2930, thanks @kepta)
+* Improvements to swimming pool, water park presets (#2927, thanks @kepta)
+* Ensure that boundary relation members look like boundaries (thanks, @jfirebaugh)
+* Add 'building' combo field for ice rink and swim facility
+* Building field should be combo not typeCombo (because `building=yes` is a valid tag)
+* Link to wiki for guidance on good changeset comments (#2923, thanks @kepta)
+* Make preset fields section collapsable (#2894)
+* Make sure DrawLine mode is called with a clean pre-operation graph (#2303, thanks @tyrasd)
+* Default to user's language when localizing names (#2882, thanks @kepta)
+* Autocomplete changeset comments from previous changeset comments (#2002, thanks @jfirebaugh)
+* Add universal multiline text field for description, fixme (#1518)
+* Fix crash when selecting a category preset with enter button
+* Remove overly agressive regexes for cleaning up websites and emails (#2892, thanks @kepta)
+* Correct typo "Platic" -> "Plastic" (#2925, thanks @M1dgard)
+* Rename "Unclassified Road" to "Minor Road" (#2916)
+
 ## 1.8.5
+##### Jan 18, 2016
 * Fix address field to not lose focus while typing (#2903, #2320)
 * Bugfixes for Internet Explorer (classList #2909, parentElement #2910)
+* Presets for various man_made tags (#2893, thanks @manfredbrandl)
 
 ## 1.8.4
+##### Jan 6, 2016
 * Block UI, disable draws while fetching missing childnodes when user restores saved work
 * Add iD.Map#redrawEnable to enable/disable redraws
 * Don't select filtered hidden vertices with the lasso
@@ -41,9 +317,11 @@
 * Set 'Content-Type': 'text/xml' when closing changeset (fix for IE auth warning) (#2874)
 
 ## 1.8.3
+##### Dec 11, 2015
 * Replace nonstandard Array `find` with `_.find` for IE11 (#2871)
 
 ## 1.8.2
+##### Dec 10, 2015
 * Better save and restore map state when entering walkthrough
 * Add maxstay field for amenity=parking preset (#2851)
 * Add presets for popular vending machines (#2827, thanks @henningvs)
@@ -53,6 +331,7 @@
 * Eliminate rounding causing jumpiness and loss of precision (#2849)
 
 ## 1.8.1
+##### Dec 2, 2015
 * Fix tag help lookup (#2844)
 * Support Internet Explorer 11 and Edge browsers (#2571)
 * New road styling for bumpy/unpaved roads (#2564, #2750, #2847)
@@ -63,10 +342,12 @@
 * Support multiple overlays and fix alignment of minimap (#2813) (thanks @brianreavis)
 
 ## 1.8.0
+##### Nov 7, 2015
 * Don't update the urlhash during the walkthrough (#1795)
 * Add surface type to parking preset (#2816)
 * Make 100% background brightness the default (#2824)
 * Use SVG for preset and feature icons (#2785)
+  * :warning: Projects that have customized the icon spritesheet may need to upgrade their custom icons
 * Add "Help Translate" icon next to "Report a Bug" (#2766)
 * Update highway colors to match openstreetmap-carto (#2764)
 * Prefer suggested capitalization in autocomplete box (#2791)
@@ -87,7 +368,12 @@
 * Better handling of multilingual `alt_name`, `old_name`, etc (#2658)
 * Add preset for Semi-Detached House (#2776)
 
+## 1.7.5
+##### Sep 28, 2015
+* Relicense iD with ISC license
+
 ## 1.7.4
+##### Sep 15, 2015
 * Show docs for the selected value in raw tag editor (#2754) (Thanks @M1dgard)
 * Improve display of implied values in access UI field (#2763)
 * Better handling of preset search terms (#2756) (Thanks @M1dgard)
@@ -123,6 +409,7 @@
 * Improve appearance of Mapillary markers (#2690) (Thanks @pgiraud)
 
 ## 1.7.3
+##### Jun 10, 2015
 * Add fee field to toilet preset (#2639) (Thanks @alexandrz)
 * Several improvements for more reliable save and post-save data fetch (#2667)
 * Use locale passed in from container iframe instead of detected locale (#2672)
@@ -141,10 +428,12 @@
 * Fix error restoring changes after deleting a node (#2637)
 
 ## 1.7.2
+##### May 3, 2015
 * Fix for 404 Error caused by duplicates in multi-fetch node request (#2626)
 * Fix oil well preset (#2621) (Thanks @1ec5)
 
 ## 1.7.1
+##### Apr 30, 2015
 * Add oil well preset (#2618) (Thanks @1ec5)
 * Add radio mast preset (#2613) (Thanks @1ec5)
 * Don't commit empty changesets (#1483)
@@ -173,7 +462,7 @@
 * Don't delete ways from route, boundary, multipolygon relations (#2526, #1461) (Thanks @systemed)
 
 ## 1.7.0
-
+##### Feb 12, 2015
 * Fix typo in smoothness field - should be "impassable" (#2523)
 * Update to Mapillary API v2 calls (#2522) (Thanks @peterneubauer)
 * Add Rounded tooltips (#2521) (Thanks @samanpwbb)
@@ -201,16 +490,18 @@
 * Add bench and covered fields to bus stop preset (#2451)
 * Replace icon fields with dropdown (#2433)
 * Add Map Data panel
-    - Data Layers (GPX, Mapillary)
-    - Area filling options (full, partial, wireframe) (#813)
-    - Map Features filtering (#1299, #1871, #2033)
+  * Data Layers (GPX, Mapillary)
+  * Area filling options (full, partial, wireframe) (#813)
+  * Map Features filtering (#1299, #1871, #2033)
+* Allow customization of presets, imagery, and taginfo
+  * :warning: These _must_ be set when creating an`iD()` object - see `index.html` example
 
 ## 1.6.2
-
+##### Oct 24, 2014
 * Fix "TypeError: r is undefined" (#2421)
 
 ## 1.6.1
-
+##### Oct 23, 2014
 * Remember raw tag editor expansion state across sessions (#2416)
 * Translate text in changes section on save panel (#2417)
 * Encode URL hash correctly (#2406)
@@ -221,7 +512,7 @@
 * Improve the error message on saving when offline (#2373)
 
 ## 1.6.0
-
+##### Oct 6, 2014
 * Add network field to Road Route relation preset (#2372)
 * Updated TIGER layer to use TIGER 2014
 * Added support for street-level imagery from Mapillary
@@ -232,13 +523,13 @@
 * Added `comment` url param to prefill changeset comment (#2311)
 
 ## 1.5.4
-
+##### Jul 29, 2014
 * Do not fully fill certain landuse values, e.g. landuse=residential (#542)
 * Class midpoints to match parent way and adjust styles
 * Test visibility of gpx coords instead of just comparing extents
 
 ## 1.5.3
-
+##### Jul 25, 2014
 * When adding gpx, only rezoom map if gpx not in viewport (#2297)
 * Workaround for Chrome crash (#2295)
 * Add mtb fields (#2244)
@@ -246,18 +537,18 @@
 * Render triangular midpoints to show direction of any selected way (#2292)
 
 ## 1.5.2
-
+##### Jul 15, 2014
 * Fixed Chrome/Windows selection bug (#2151)
 * Don't automatically tag motorways, etc. as oneway=yes
 * Disable Move and Rotate operations if area < 80% contained in the viewport
 
 ## 1.5.1
-
+##### Jul 10, 2014
 * Fix mixed content errors on https osm.org (#2281)
 * Fix suggested access values for parking (#2280)
 
 ## 1.5.0
-
+##### Jul 8, 2014
 * Add support for localized address fields (#2246)
 * Rendering improvements for layers (#2250)
 * Add a map scale (#2266)
@@ -265,7 +556,7 @@
 * Better midpoint rendering (#2257)
 
 ## 1.4.0
-
+##### May 29, 2014
 * Ensure combobox menus are closed on blur (#2207)
 * Limit imagery_used tag to 255 characters (#2181)
 * Simplify and fix midpoint drawing logic (#2136)
@@ -276,7 +567,7 @@
 * Add turn restriction editor
 
 ## 1.3.10
-
+##### May 21, 2014
 * `oneway=no` overrides implicit oneways on junction=roundabout, etc. (#2220)
 * Add presets for fords, parking_entrance, charging_station, compressed_air, churchyard, shop=wine
 * Improve access placeholders (#2221)
@@ -292,7 +583,7 @@
 * Add fill style for landuse=military
 
 ## 1.3.9
-
+##### Apr 9, 2014
 * Prevent closed areas from invalid disconnection (#2178)
 * Remove layer field from waterway=stream
 * Add preset for place=suburb and shop=seafood
@@ -300,7 +591,7 @@
 * Mapbox Satellite now supports z17-z19
 
 ## 1.3.8
-
+##### Mar 28, 2014
 * Disable circularize and orthogonalize operations when way is <80% contained in the viewport
 * Add place=neighbourhood preset
 * Add denomination=* field for cemetary, graveyard, funeral home
@@ -325,7 +616,7 @@
 * Fix recycling field keys (#2140)
 
 ## 1.3.7
-
+##### Feb 25, 2014
 * Added building presets
 * Improve how tags are merged when merging to a multipolygon
 * Disable merge operation if at least one relation is incomplete
@@ -335,7 +626,7 @@
 * Remove addr:housename field from address preset
 
 ## 1.3.6
-
+##### Feb 5, 2014
 * More protection against relation loops (#2096)
 * Fix freeze when using Clinic preset (#2102)
 * Allow rotating closed multipolygon members (#1718)
@@ -343,7 +634,7 @@
 * Added social_facility presets (#2109)
 
 ## 1.3.5
-
+##### Jan 8, 2014
 * Smoother and faster panning, zooming, and tooltips
 * Fix bug relating to deleted nodes outside the viewport (#2085)
 * Ensure "New Relation..." is always available (#2066)
@@ -362,7 +653,7 @@
   and pistes.
 
 ## 1.3.4
-
+##### Nov 26, 2013
 * Replace TIGER 2012 layer with next-generation TIGER 2013 layer (#2010)
 * Add tooltips to "untagged feature" warnings
 * Add pressets and category for golf features (#2013)
@@ -372,7 +663,7 @@
 * Fix zoom to feature when clicking search results (#2023)
 
 ## 1.3.3
-
+##### Nov 22, 2013
 * Support for loading GPX-files via url parameter (#1965)
 * Update osm-auth (#1904)
 * Update 3rd party dependencies (Lo-Dash, D3, RBush)
@@ -383,7 +674,7 @@
 * Fix undo-related bug (#1978)
 
 ## 1.3.2
-
+##### Nov 14, 2013
 * Update maki
 * Fix Disconnect of way with multiple intersections (#1955)
 * Fix unclosed area rendering (#1958)
@@ -397,14 +688,14 @@
 * Reset invalid opacity values to default (#1923)
 
 ## 1.3.1
-
+##### Oct 26, 2013
 * Fix misalignment -> Fix alignment (#1913)
 * Update maki (#1916)
 * Prioritize boundary tag to minimize area fills (#1920)
 * Fix background defaulting to 0% brightness (#1923)
 
 ## 1.3.0
-
+##### Oct 24, 2013
 * Fix corner case that could cause getting stuck in drag mode (#1910)
 * Improved display of changed objects in save screen
 * Improved performance
@@ -435,7 +726,7 @@
 * New presets: man_made=observation, shop=locksmith, leisure=common and more
 
 ## 1.2.1
-
+##### Sep 30, 2013
 * Split only the line of a node shared by a line and an area
 * Handle multipolygon corner case when splitting (#1799)
 * Don't automatically apply building tags to shop=car (#1813)
@@ -450,7 +741,7 @@
 * Add more tags to areas list
 
 ## 1.2.0
-
+##### Sep 26, 2013
 * Don't auto-save intro tutorial edits (#1745, #1795)
 * Added waypoint display to GPX layer
 * Added "Straighten" operation
@@ -470,13 +761,13 @@
 * Fix some walkthrough glitches (#1744)
 
 ## 1.1.6
-
+##### Aug 24, 2013
 * Fix walkthrough on Firefox (#1743)
 * Fix icon at end of walkthough (#1740)
 * Fix walkthrough (#1739)
 
 ## 1.1.5
-
+##### Aug 23, 2013
 * Add amenity=ranger_station preset (1723)
 * Add terms for tourism=artwork (#1726)
 * Reduce prominence of share links, add G+
@@ -490,13 +781,13 @@
 * Add support for an externally provided asset map (#1699)
 
 ## 1.1.4
-
+##### Aug 17, 2013
 * Fix adding multilingual name (#1694)
 * Fix social buttons (#1690)
 * Work around a Firefox bug that sometimes caused elements to be unselectable or stuck dragging (#1691, #1692)
 
 ## 1.1.3
-
+##### Aug 15, 2013
 * Fix behavior of enter key in name field (#1681)
 * Remove area=yes when choosing an area preset (#1684)
 * Save history more frequently (#1345)
@@ -508,23 +799,22 @@
 * Add leisure=track preset (#1683)
 
 ## 1.1.2
-
+##### Aug 12, 2013
 * Fix cursor offset when clicking/dragging after resizing the window (#1678)
 * Include low-frequency tag values if they have a wiki entry
 * Fix tag value suggestions in preset comboboxes (#1679, #1680)
 
 ## 1.1.1
-
+##### Aug 9, 2013
 * Improve performance when drawing
 * Tail should appear only first time
 * Fix radial menu tooltip positioning on Firefox
 
 ## 1.1.0
-
+##### Aug 9, 2013
 * Fix radial menu tooltip positioning
 
 ## 1.1.0rc1
-
 * Custom layers support TMS-flipped Y coordinate with {ty} replacement.
 * Allow to join more than two ways (#649)
 * Many preset additions and improvements
@@ -540,7 +830,6 @@
 * More dramatic different between hover and active edit feature pane
 
 ## 1.1.0beta1
-
 * Performance improvements
 * Added a UI for multilingual name tags
 * "Report a bug" in footer is now an icon
@@ -575,7 +864,7 @@
 * You can add a member to a relation via the "All relations" section of the sidebar
 
 ## 1.0.1
-
+##### May 10, 2013
 * Test, imagery, translation, and preset updates
 * Fix untranslatable strings
 * Prefer to keep existing ways when joining

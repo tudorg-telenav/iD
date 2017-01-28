@@ -1,4 +1,5 @@
-describe("diff3", function() {
+/* global Diff3:false */
+describe('diff3', function() {
     function split(s) {
         return s ? s.split(/ /) : [];
     }

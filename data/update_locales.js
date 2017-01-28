@@ -1,14 +1,16 @@
 /* Downloads the latest translations from Transifex */
 
-var request = require('request'),
+var request = require('request').defaults({ maxSockets: 1 }),
     yaml = require('js-yaml'),
     fs = require('fs'),
-    _ = require('../js/lib/lodash.js');
+    stringify = require('json-stable-stringify'),
+    _ = require('lodash');
 
 var resources = ['core', 'presets'];
 var outdir = './dist/locales/';
-var api = 'http://www.transifex.com/api/2/';
+var api = 'https://www.transifex.com/api/2/';
 var project = api + 'project/id-editor/';
+
 
 /*
  * Transifex oddly doesn't allow anonymous downloading
@@ -25,24 +27,38 @@ var auth = JSON.parse(fs.readFileSync('./transifex.auth', 'utf8'));
 var sourceCore = yaml.load(fs.readFileSync('./data/core.yaml', 'utf8')),
     sourcePresets = yaml.load(fs.readFileSync('./data/presets.yaml', 'utf8'));
 
+
 asyncMap(resources, getResource, function(err, locales) {
     if (err) return console.log(err);
 
     var locale = _.merge(sourceCore, sourcePresets),
-        codes = [];
+        dataLocales = {};
 
     locales.forEach(function(l) {
         locale = _.merge(locale, l);
     });
 
-    for (var i in locale) {
-        if (i === 'en' || _.isEmpty(locale[i])) continue;
-        codes.push(i);
-        fs.writeFileSync(outdir + i + '.json', JSON.stringify(locale[i], null, 4));
-    }
-
-    fs.writeFileSync('data/locales.json', JSON.stringify(codes, null, 4));
+    asyncMap(Object.keys(locale),
+        function(code, done) {
+            if (code === 'en' || _.isEmpty(locale[code])) {
+                done();
+            } else {
+                var obj = {};
+                obj[code] = locale[code];
+                fs.writeFileSync(outdir + code + '.json', JSON.stringify(obj, null, 4));
+                getLanguageInfo(code, function(err, info) {
+                    dataLocales[code] = { rtl: info && info.rtl };
+                    done();
+                });
+            }
+        }, function(err) {
+            if (!err) {
+                fs.writeFileSync('data/locales.json', stringify({ dataLocales: dataLocales }, { space: 4 }));
+            }
+        }
+    );
 });
+
 
 function getResource(resource, callback) {
     resource = project + 'resource/' + resource + '/';
@@ -62,23 +78,38 @@ function getResource(resource, callback) {
     });
 }
 
+
 function getLanguage(resource) {
     return function(code, callback) {
         code = code.replace(/-/g, '_');
         var url = resource + 'translation/' + code;
         if (code === 'vi') url += '?mode=reviewed';
-        request.get(url, { auth : auth },
-            function(err, resp, body) {
+        request.get(url, { auth : auth }, function(err, resp, body) {
             if (err) return callback(err);
+            console.log(resp.statusCode + ': ' + url);
             callback(null, yaml.load(JSON.parse(body).content)[code]);
         });
     };
 }
 
+
+function getLanguageInfo(code, callback) {
+    code = code.replace(/-/g, '_');
+    var url = api + 'language/' + code;
+    request.get(url, { auth : auth }, function(err, resp, body) {
+        if (err) return callback(err);
+        console.log(resp.statusCode + ': ' + url);
+        callback(null, JSON.parse(body));
+    });
+}
+
+
 function getLanguages(resource, callback) {
-    request.get(resource + '?details', { auth: auth },
+    var url = resource + '?details';
+    request.get(url, { auth: auth },
         function(err, resp, body) {
         if (err) return callback(err);
+        console.log(resp.statusCode + ': ' + url);
         callback(null, JSON.parse(body).available_languages.map(function(d) {
             return d.code.replace(/_/g, '-');
         }).filter(function(d) {
@@ -86,6 +117,7 @@ function getLanguages(resource, callback) {
         }));
     });
 }
+
 
 function asyncMap(inputs, func, callback) {
     var remaining = inputs.length,

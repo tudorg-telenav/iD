@@ -13,10 +13,39 @@
     },
     "tags": [
         {
+            "key": "aerialway"
+        },
+        {
+            "key": "aeroway"
+        },
+        {
+            "key": "amenity"
+        },
+        {
+            "key": "highway"
+        },
+        {
+            "key": "place"
+        },
+        {
+            "key": "power"
+        },
+        {
+            "key": "railway"
+        },
+        {
+            "key": "junction",
+            "value": "roundabout"
+        },
+        {
+            "key": "waterway"
+        },
+        {
             "key": "addr:housenumber"
         },
         {
-            "key": "aerialway"
+            "key": "advertising",
+            "value": "billboard"
         },
         {
             "key": "aerialway",
@@ -55,9 +84,6 @@
             "value": "t-bar"
         },
         {
-            "key": "aeroway"
-        },
-        {
             "key": "aeroway",
             "value": "aerodrome"
         },
@@ -90,7 +116,12 @@
             "value": "terminal"
         },
         {
-            "key": "amenity"
+            "key": "amenity",
+            "value": "register_office"
+        },
+        {
+            "key": "amenity",
+            "value": "swimming_pool"
         },
         {
             "key": "amenity",
@@ -202,6 +233,14 @@
         },
         {
             "key": "amenity",
+            "value": "coworking_space"
+        },
+        {
+            "key": "amenity",
+            "value": "crematorium"
+        },
+        {
+            "key": "amenity",
             "value": "dentist"
         },
         {
@@ -234,6 +273,10 @@
         },
         {
             "key": "amenity",
+            "value": "food_court"
+        },
+        {
+            "key": "amenity",
             "value": "fountain"
         },
         {
@@ -258,6 +301,14 @@
         },
         {
             "key": "amenity",
+            "value": "ice_cream"
+        },
+        {
+            "key": "amenity",
+            "value": "internet_cafe"
+        },
+        {
+            "key": "amenity",
             "value": "kindergarten"
         },
         {
@@ -278,15 +329,15 @@
         },
         {
             "key": "amenity",
-            "value": "parking"
-        },
-        {
-            "key": "amenity",
             "value": "parking_entrance"
         },
         {
             "key": "amenity",
             "value": "parking_space"
+        },
+        {
+            "key": "amenity",
+            "value": "parking"
         },
         {
             "key": "amenity",
@@ -314,6 +365,10 @@
         },
         {
             "key": "amenity",
+            "value": "planetarium"
+        },
+        {
+            "key": "amenity",
             "value": "police"
         },
         {
@@ -326,7 +381,15 @@
         },
         {
             "key": "amenity",
+            "value": "prison"
+        },
+        {
+            "key": "amenity",
             "value": "pub"
+        },
+        {
+            "key": "amenity",
+            "value": "public_bath"
         },
         {
             "key": "amenity",
@@ -337,12 +400,12 @@
             "value": "ranger_station"
         },
         {
-            "key": "amenity",
-            "value": "recycling"
+            "key": "recycling_type",
+            "value": "centre"
         },
         {
             "key": "amenity",
-            "value": "register_office"
+            "value": "recycling"
         },
         {
             "key": "amenity",
@@ -379,10 +442,6 @@
         {
             "key": "amenity",
             "value": "studio"
-        },
-        {
-            "key": "amenity",
-            "value": "swimming_pool"
         },
         {
             "key": "amenity",
@@ -462,6 +521,10 @@
         },
         {
             "key": "amenity",
+            "value": "waste_transfer_station"
+        },
+        {
+            "key": "amenity",
             "value": "water_point"
         },
         {
@@ -473,6 +536,10 @@
         },
         {
             "key": "barrier"
+        },
+        {
+            "key": "barrier",
+            "value": "entrance"
         },
         {
             "key": "barrier",
@@ -497,10 +564,6 @@
         {
             "key": "barrier",
             "value": "ditch"
-        },
-        {
-            "key": "barrier",
-            "value": "entrance"
         },
         {
             "key": "barrier",
@@ -547,15 +610,23 @@
         },
         {
             "key": "building",
+            "value": "bunker"
+        },
+        {
+            "key": "building",
+            "value": "entrance"
+        },
+        {
+            "key": "building",
+            "value": "train_station"
+        },
+        {
+            "key": "building",
             "value": "apartments"
         },
         {
             "key": "building",
             "value": "barn"
-        },
-        {
-            "key": "building",
-            "value": "bunker"
         },
         {
             "key": "building",
@@ -592,10 +663,6 @@
         {
             "key": "building",
             "value": "dormitory"
-        },
-        {
-            "key": "building",
-            "value": "entrance"
         },
         {
             "key": "building",
@@ -675,10 +742,6 @@
         },
         {
             "key": "building",
-            "value": "train_station"
-        },
-        {
-            "key": "building",
             "value": "university"
         },
         {
@@ -686,7 +749,27 @@
             "value": "warehouse"
         },
         {
+            "key": "camp_site",
+            "value": "camp_pitch"
+        },
+        {
             "key": "craft"
+        },
+        {
+            "key": "craft",
+            "value": "jeweler"
+        },
+        {
+            "key": "craft",
+            "value": "locksmith"
+        },
+        {
+            "key": "craft",
+            "value": "optician"
+        },
+        {
+            "key": "craft",
+            "value": "tailor"
         },
         {
             "key": "craft",
@@ -762,23 +845,11 @@
         },
         {
             "key": "craft",
-            "value": "jeweler"
-        },
-        {
-            "key": "craft",
             "value": "key_cutter"
         },
         {
             "key": "craft",
-            "value": "locksmith"
-        },
-        {
-            "key": "craft",
             "value": "metal_construction"
-        },
-        {
-            "key": "craft",
-            "value": "optician"
         },
         {
             "key": "craft",
@@ -846,10 +917,6 @@
         },
         {
             "key": "craft",
-            "value": "tailor"
-        },
-        {
-            "key": "craft",
             "value": "tiler"
         },
         {
@@ -878,7 +945,35 @@
         },
         {
             "key": "emergency",
+            "value": "designated"
+        },
+        {
+            "key": "emergency",
+            "value": "destination"
+        },
+        {
+            "key": "emergency",
+            "value": "no"
+        },
+        {
+            "key": "emergency",
+            "value": "official"
+        },
+        {
+            "key": "emergency",
+            "value": "private"
+        },
+        {
+            "key": "emergency",
+            "value": "yes"
+        },
+        {
+            "key": "emergency",
             "value": "ambulance_station"
+        },
+        {
+            "key": "emergency",
+            "value": "defibrillator"
         },
         {
             "key": "emergency",
@@ -928,6 +1023,10 @@
             "value": "water"
         },
         {
+            "key": "golf",
+            "value": "lateral_water_hazard"
+        },
+        {
             "key": "landuse",
             "value": "grass"
         },
@@ -940,7 +1039,12 @@
             "value": "water"
         },
         {
-            "key": "highway"
+            "key": "golf",
+            "value": "water_hazard"
+        },
+        {
+            "key": "healthcare",
+            "value": "blood_donation"
         },
         {
             "key": "highway",
@@ -972,15 +1076,15 @@
         },
         {
             "key": "highway",
+            "value": "give_way"
+        },
+        {
+            "key": "highway",
             "value": "living_street"
         },
         {
             "key": "highway",
             "value": "mini_roundabout"
-        },
-        {
-            "key": "highway",
-            "value": "motorway"
         },
         {
             "key": "highway",
@@ -992,6 +1096,10 @@
         },
         {
             "key": "highway",
+            "value": "motorway"
+        },
+        {
+            "key": "highway",
             "value": "path"
         },
         {
@@ -1000,11 +1108,11 @@
         },
         {
             "key": "highway",
-            "value": "primary"
+            "value": "primary_link"
         },
         {
             "key": "highway",
-            "value": "primary_link"
+            "value": "primary"
         },
         {
             "key": "highway",
@@ -1024,11 +1132,11 @@
         },
         {
             "key": "highway",
-            "value": "secondary"
+            "value": "secondary_link"
         },
         {
             "key": "highway",
-            "value": "secondary_link"
+            "value": "secondary"
         },
         {
             "key": "highway",
@@ -1072,11 +1180,11 @@
         },
         {
             "key": "highway",
-            "value": "tertiary"
+            "value": "tertiary_link"
         },
         {
             "key": "highway",
-            "value": "tertiary_link"
+            "value": "tertiary"
         },
         {
             "key": "highway",
@@ -1084,11 +1192,11 @@
         },
         {
             "key": "highway",
-            "value": "traffic_signals"
+            "value": "traffic_mirror"
         },
         {
             "key": "highway",
-            "value": "trunk"
+            "value": "traffic_signals"
         },
         {
             "key": "highway",
@@ -1096,7 +1204,15 @@
         },
         {
             "key": "highway",
+            "value": "trunk"
+        },
+        {
+            "key": "highway",
             "value": "turning_circle"
+        },
+        {
+            "key": "highway",
+            "value": "turning_loop"
         },
         {
             "key": "highway",
@@ -1146,6 +1262,10 @@
         },
         {
             "key": "landuse",
+            "value": "farm"
+        },
+        {
+            "key": "landuse",
             "value": "allotments"
         },
         {
@@ -1167,10 +1287,6 @@
         {
             "key": "landuse",
             "value": "construction"
-        },
-        {
-            "key": "landuse",
-            "value": "farm"
         },
         {
             "key": "landuse",
@@ -1222,6 +1338,10 @@
         },
         {
             "key": "landuse",
+            "value": "recreation_ground"
+        },
+        {
+            "key": "landuse",
             "value": "residential"
         },
         {
@@ -1241,6 +1361,10 @@
         },
         {
             "key": "leisure",
+            "value": "bird_hide"
+        },
+        {
+            "key": "leisure",
             "value": "bowling_alley"
         },
         {
@@ -1249,11 +1373,27 @@
         },
         {
             "key": "leisure",
+            "value": "dance"
+        },
+        {
+            "key": "leisure",
             "value": "dog_park"
         },
         {
             "key": "leisure",
             "value": "firepit"
+        },
+        {
+            "key": "leisure",
+            "value": "fitness_centre"
+        },
+        {
+            "key": "sport",
+            "value": "yoga"
+        },
+        {
+            "key": "leisure",
+            "value": "fitness_station"
         },
         {
             "key": "leisure",
@@ -1270,6 +1410,10 @@
         {
             "key": "leisure",
             "value": "marina"
+        },
+        {
+            "key": "leisure",
+            "value": "miniature_golf"
         },
         {
             "key": "leisure",
@@ -1301,6 +1445,10 @@
         },
         {
             "key": "sport",
+            "value": "bowls"
+        },
+        {
+            "key": "sport",
             "value": "rugby_league"
         },
         {
@@ -1328,6 +1476,10 @@
             "value": "playground"
         },
         {
+            "key": "leisure",
+            "value": "resort"
+        },
+        {
             "key": "sport",
             "value": "running"
         },
@@ -1338,6 +1490,10 @@
         {
             "key": "leisure",
             "value": "sports_centre"
+        },
+        {
+            "key": "sport",
+            "value": "swimming"
         },
         {
             "key": "leisure",
@@ -1352,7 +1508,15 @@
             "value": "track"
         },
         {
+            "key": "leisure",
+            "value": "water_park"
+        },
+        {
             "key": "man_made"
+        },
+        {
+            "key": "man_made",
+            "value": "embankment"
         },
         {
             "key": "man_made",
@@ -1364,15 +1528,15 @@
         },
         {
             "key": "man_made",
+            "value": "bridge"
+        },
+        {
+            "key": "man_made",
             "value": "chimney"
         },
         {
             "key": "man_made",
             "value": "cutline"
-        },
-        {
-            "key": "man_made",
-            "value": "embankment"
         },
         {
             "key": "man_made",
@@ -1412,11 +1576,19 @@
         },
         {
             "key": "man_made",
+            "value": "pumping_station"
+        },
+        {
+            "key": "man_made",
             "value": "silo"
         },
         {
             "key": "man_made",
             "value": "storage_tank"
+        },
+        {
+            "key": "surveillance:type",
+            "value": "camera"
         },
         {
             "key": "man_made",
@@ -1547,11 +1719,11 @@
         },
         {
             "key": "natural",
-            "value": "tree"
+            "value": "tree_row"
         },
         {
             "key": "natural",
-            "value": "tree_row"
+            "value": "tree"
         },
         {
             "key": "natural",
@@ -1583,6 +1755,10 @@
         },
         {
             "key": "office"
+        },
+        {
+            "key": "office",
+            "value": "travel_agent"
         },
         {
             "key": "office",
@@ -1619,6 +1795,10 @@
         {
             "key": "office",
             "value": "government"
+        },
+        {
+            "key": "government",
+            "value": "register_office"
         },
         {
             "key": "office",
@@ -1661,14 +1841,7 @@
             "value": "therapist"
         },
         {
-            "key": "office",
-            "value": "travel_agent"
-        },
-        {
             "key": "piste:type"
-        },
-        {
-            "key": "place"
         },
         {
             "key": "place",
@@ -1711,7 +1884,8 @@
             "value": "village"
         },
         {
-            "key": "power"
+            "key": "power",
+            "value": "sub_station"
         },
         {
             "key": "power",
@@ -1728,10 +1902,6 @@
         {
             "key": "power",
             "value": "pole"
-        },
-        {
-            "key": "power",
-            "value": "sub_station"
         },
         {
             "key": "power",
@@ -1754,11 +1924,12 @@
             "value": "stop_position"
         },
         {
-            "key": "railway"
+            "key": "railway",
+            "value": "abandoned"
         },
         {
             "key": "railway",
-            "value": "abandoned"
+            "value": "crossing"
         },
         {
             "key": "railway",
@@ -1798,19 +1969,15 @@
         },
         {
             "key": "railway",
-            "value": "subway"
-        },
-        {
-            "key": "railway",
             "value": "subway_entrance"
         },
         {
             "key": "railway",
-            "value": "tram"
+            "value": "subway"
         },
         {
-            "key": "junction",
-            "value": "roundabout"
+            "key": "railway",
+            "value": "tram"
         },
         {
             "key": "route",
@@ -1818,6 +1985,14 @@
         },
         {
             "key": "shop"
+        },
+        {
+            "key": "shop",
+            "value": "fishmonger"
+        },
+        {
+            "key": "shop",
+            "value": "vacant"
         },
         {
             "key": "shop",
@@ -1856,6 +2031,14 @@
             "value": "beauty"
         },
         {
+            "key": "beauty",
+            "value": "nails"
+        },
+        {
+            "key": "beauty",
+            "value": "tanning"
+        },
+        {
             "key": "shop",
             "value": "bed"
         },
@@ -1889,10 +2072,6 @@
         },
         {
             "key": "shop",
-            "value": "car"
-        },
-        {
-            "key": "shop",
             "value": "car_parts"
         },
         {
@@ -1901,7 +2080,15 @@
         },
         {
             "key": "shop",
+            "value": "car"
+        },
+        {
+            "key": "shop",
             "value": "carpet"
+        },
+        {
+            "key": "shop",
+            "value": "charity"
         },
         {
             "key": "shop",
@@ -1918,6 +2105,10 @@
         {
             "key": "shop",
             "value": "clothes"
+        },
+        {
+            "key": "shop",
+            "value": "coffee"
         },
         {
             "key": "shop",
@@ -1969,6 +2160,10 @@
         },
         {
             "key": "shop",
+            "value": "e-cigarette"
+        },
+        {
+            "key": "shop",
             "value": "electronics"
         },
         {
@@ -1986,10 +2181,6 @@
         {
             "key": "shop",
             "value": "fashion"
-        },
-        {
-            "key": "shop",
-            "value": "fishmonger"
         },
         {
             "key": "shop",
@@ -2117,6 +2308,10 @@
         },
         {
             "key": "shop",
+            "value": "nutrition_supplements"
+        },
+        {
+            "key": "shop",
             "value": "optician"
         },
         {
@@ -2130,6 +2325,10 @@
         {
             "key": "shop",
             "value": "paint"
+        },
+        {
+            "key": "shop",
+            "value": "pastry"
         },
         {
             "key": "shop",
@@ -2181,6 +2380,10 @@
         },
         {
             "key": "shop",
+            "value": "storage_rental"
+        },
+        {
+            "key": "shop",
             "value": "supermarket"
         },
         {
@@ -2217,10 +2420,6 @@
         },
         {
             "key": "shop",
-            "value": "vacant"
-        },
-        {
-            "key": "shop",
             "value": "vacuum_cleaner"
         },
         {
@@ -2229,11 +2428,11 @@
         },
         {
             "key": "shop",
-            "value": "video"
+            "value": "video_games"
         },
         {
             "key": "shop",
-            "value": "video_games"
+            "value": "video"
         },
         {
             "key": "shop",
@@ -2260,6 +2459,14 @@
         },
         {
             "key": "tourism",
+            "value": "apartment"
+        },
+        {
+            "key": "tourism",
+            "value": "aquarium"
+        },
+        {
+            "key": "tourism",
             "value": "artwork"
         },
         {
@@ -2280,6 +2487,10 @@
         },
         {
             "key": "tourism",
+            "value": "gallery"
+        },
+        {
+            "key": "tourism",
             "value": "guest_house"
         },
         {
@@ -2293,6 +2504,22 @@
         {
             "key": "tourism",
             "value": "information"
+        },
+        {
+            "key": "information",
+            "value": "board"
+        },
+        {
+            "key": "information",
+            "value": "guidepost"
+        },
+        {
+            "key": "information",
+            "value": "map"
+        },
+        {
+            "key": "information",
+            "value": "office"
         },
         {
             "key": "tourism",
@@ -2319,12 +2546,35 @@
             "value": "zoo"
         },
         {
+            "key": "traffic_calming"
+        },
+        {
             "key": "traffic_calming",
             "value": "bump"
         },
         {
             "key": "traffic_calming",
+            "value": "chicane"
+        },
+        {
+            "key": "traffic_calming",
+            "value": "choker"
+        },
+        {
+            "key": "traffic_calming",
+            "value": "cushion"
+        },
+        {
+            "key": "traffic_calming",
+            "value": "dip"
+        },
+        {
+            "key": "traffic_calming",
             "value": "hump"
+        },
+        {
+            "key": "traffic_calming",
+            "value": "island"
         },
         {
             "key": "traffic_calming",
@@ -2336,15 +2586,15 @@
         },
         {
             "key": "type",
+            "value": "multipolygon"
+        },
+        {
+            "key": "type",
             "value": "boundary"
         },
         {
             "key": "boundary",
             "value": "administrative"
-        },
-        {
-            "key": "type",
-            "value": "multipolygon"
         },
         {
             "key": "type",
@@ -2380,6 +2630,10 @@
         },
         {
             "key": "type",
+            "value": "route_master"
+        },
+        {
+            "key": "type",
             "value": "route"
         },
         {
@@ -2408,6 +2662,10 @@
         },
         {
             "key": "route",
+            "value": "horse"
+        },
+        {
+            "key": "route",
             "value": "pipeline"
         },
         {
@@ -2428,10 +2686,7 @@
         },
         {
             "key": "type",
-            "value": "route_master"
-        },
-        {
-            "key": "waterway"
+            "value": "site"
         },
         {
             "key": "waterway",
@@ -2480,6 +2735,10 @@
         {
             "key": "waterway",
             "value": "water_point"
+        },
+        {
+            "key": "waterway",
+            "value": "waterfall"
         },
         {
             "key": "waterway",
